@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class MemberDAO extends SQLiteOpenHelper{
 
     public MemberDAO(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, "", null, 1);
+        super(context, "hanbit.db", null, 1);
 
     }
     //id,pass,name,phone,addr,profile
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql=String.format("%s","CREATE TABLE table_name\n" +
+        String sql=String.format("%s","CREATE TABLE IF NOT EXISTS Member\n" +
                 "(\n" +
                 "id text(10) PRIMARY KEY,\n" +
                 "pass text(10),\n" +
@@ -28,6 +28,27 @@ public class MemberDAO extends SQLiteOpenHelper{
                 "phone text(13),\n" +
                 "addr text(10),\n" +
                 "profile text(10));");
+        db.execSQL("CREATE TABLE IF NOT EXISTS Message(\n" +
+                "  \t_id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                "    sender TEXT,\n" +
+                "    receiver TEXT,\n" +
+                "    content TEXT,\n" +
+                "    writeTime TEXT,\n" +
+                "    id TEXT,\n" +
+                "    FOREIGN KEY(id) REFERENCES Member(id)\n" +
+                ");\n");
+
+        db.execSQL("INSERT INTO Member(id,pw,name,email,phone,photo,addr)\n" +
+                "VALUES('hong','1','홍길동','hong@test.com','010-1234-5678','default.jpg','서울');");
+        db.execSQL("INSERT INTO Member(id,pw,name,email,phone,photo,addr)\n" +
+                "VALUES('kim','1','김유신','kim@test.com','010-1234-5678','default.jpg','서울');");
+        db.execSQL("INSERT INTO Member(id,pw,name,email,phone,photo,addr)\n" +
+                "VALUES('lee','1','이순신','lee@test.com','010-1234-5678','default.jpg','서울');");
+        db.execSQL("INSERT INTO Member(id,pw,name,email,phone,photo,addr)\n" +
+                "VALUES('park','1','박지성','park@test.com','010-1234-5678','default.jpg','서울');");
+        db.execSQL("INSERT INTO Member(id,pw,name,email,phone,photo,addr)\n" +
+                "VALUES('yoo','1','유비','yoo@test.com','010-1234-5678','default.jpg','서울');");
+
     }
 
     @Override
