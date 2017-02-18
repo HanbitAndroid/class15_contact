@@ -30,7 +30,7 @@ public class MemberActivity extends AppCompatActivity implements View.OnClickLis
         btList.setOnClickListener(this);
         btUpdate.setOnClickListener(this);
         btDelete.setOnClickListener(this);
-        service = new MemberServiceImpl();
+        service = new MemberServiceImpl(this.getApplicationContext());
         member=new MemberBean();
     }
 

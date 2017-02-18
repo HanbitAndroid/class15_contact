@@ -4,7 +4,7 @@ package com.hanbit.app.contactapp.domain;
  * Created by hb2000 on 2017-02-04.
  */
 public class MemberBean {
-    private String id,pass,name,phone,addr,profile;
+    private String id,pass,name,email,phone,profile,addr;
 
     public String getId() {
         return id;
@@ -30,6 +30,14 @@ public class MemberBean {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -38,19 +46,19 @@ public class MemberBean {
         this.phone = phone;
     }
 
-    public String getAddr() {
-        return addr;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
     public String getProfile() {
         return profile;
     }
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 }
